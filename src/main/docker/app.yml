@@ -1,0 +1,14 @@
+version: '2'
+services:
+    campuz360-app:
+        image: campuz360
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://campuz360-mysql:3306/campuz360?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    campuz360-mysql:
+        extends:
+            file: mysql.yml
+            service: campuz360-mysql
